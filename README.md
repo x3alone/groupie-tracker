@@ -8,9 +8,11 @@
 >>
 >>>The we have 4 bonuses to this groupie-tracker project: visualization - geolocalization - filters - search-bar. (u can find these bonuses as u browse the branches)
 # AUTHORS
->>@yahyaahs
->>@reg-era
->>@x3alone
+>[@yahyaahs](https://github.com/yahyaahs)
+
+>[@reg-era](https://github.com/reg-era)
+
+>[@x3alone](https://github.com/x3alone)
 ### API: [Groupie-Tracker-API](https://groupietrackers.herokuapp.com/api).
 
 ## Structurer of project:
