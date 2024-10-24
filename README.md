@@ -1,5 +1,18 @@
 # Groupie Tracker
-search bar consists of creating a functional program that searches, inside your website, for a specific attribute in the system we made
+# Discription
+>>>This project cointains an api(this api contains artists/bands info like: creation date - concert locations- first album dates - members... etc) that should be fitched and well structered and shown in a localhost web server, (we only used go css and html purely)
+>>
+>>
+>>>Further more this fitched data should be organized in cards of artists/bands.
+>>
+>>
+>>>The we have 4 bonuses to this groupie-tracker project: visualization - geolocalization - filters - search-bar. (u can find these bonuses as u browse the branches)
+# AUTHORS
+>[@yahyaahs](https://github.com/yahyaahs)
+
+>[@reg-era](https://github.com/reg-era)
+
+>[@x3alone](https://github.com/x3alone)
 ### API: [Groupie-Tracker-API](https://groupietrackers.herokuapp.com/api).
 
 ## Structurer of project:
@@ -30,14 +43,3 @@ search bar consists of creating a functional program that searches, inside your 
 |
 |_README.md
 ```
-## Usage
-
-§ go run main.go
-
-then acces the website on http://localhost:8080
-
-## Authors
-
-* [ifoukahi](https://learn.zone01oujda.ma/git/ifoukahi)
-* [ochouari](https://learn.zone01oujda.ma/git/ochouari)
-* [yhoussai](https://learn.zone01oujda.ma/git/yhoussai)
