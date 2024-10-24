@@ -1,21 +1,27 @@
 # Groupie Tracker
-# Discription
->>>This project cointains an api(this api contains artists/bands info like: creation date - concert locations- first album dates - members... etc) that should be fitched and well structered and shown in a localhost web server, (we only used go css and html purely)
->>
->>
->>>Further more this fitched data should be organized in cards of artists/bands.
->>
->>
->>>The we have 4 bonuses to this groupie-tracker project: visualization - geolocalization - filters - search-bar. (u can find these bonuses as u browse the branches)
-# AUTHORS
-## >[@yahyaahs](https://github.com/yahyaahs)
 
-## >[@reg-era](https://github.com/reg-era)
+## Description
+This project uses an API that provides information about artists and bands, including their creation dates, concert locations, first album release dates, members, and more. This data is fetched, structured, and displayed on a local web server. The project is built using pure Go, CSS, and HTML.
 
-## >[@x3alone](https://github.com/x3alone)
-### API: [Groupie-Tracker-API](https://groupietrackers.herokuapp.com/api).
+Additionally, the fetched data is organized into a series of artist/band cards.
 
-## Structurer of project:
+The project includes four main bonus features:
+1. Visualization
+2. Geolocation
+3. Filters
+4. Search bar
+
+You can explore these features by browsing the different branches of the project.
+
+## Authors
+- [@yahyaahs](https://github.com/yahyaahs)
+- [@reg-era](https://github.com/reg-era)
+- [@x3alone](https://github.com/x3alone)
+
+### API: [Groupie Tracker API](https://groupietrackers.herokuapp.com/api)
+
+## Project Structure:
+
 ```
 |_main.go
 |
