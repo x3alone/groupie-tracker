@@ -14,6 +14,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 
 	op1 := GetOptions(Data)
+	op2 := GetLocations(Data.Cards)
 	Data.Notfound = false
 
 	if r.Method == "POST" {
@@ -30,15 +31,15 @@ func Index(w http.ResponseWriter, r *http.Request) {
 				newcard = append(newcard, Data.Cards[i])
 			}
 			if len(newcard) != 0 {
-				ExecuteTemplate(w, PageData{Cards: newcard, Option: op1, Notfound: false})
+				ExecuteTemplate(w, PageData{Cards: newcard, Option: op1, Oplocation: op2, Notfound: false})
 			} else {
-				ExecuteTemplate(w, PageData{Cards: newcard, Option: op1, Notfound: true})
+				ExecuteTemplate(w, PageData{Cards: newcard, Option: op1, Oplocation: op2, Notfound: true})
 			}
 		} else {
-			ExecuteTemplate(w, PageData{Cards: Data.Cards, Option: op1, Notfound: false})
+			ExecuteTemplate(w, PageData{Cards: Data.Cards, Option: op1, Oplocation: op2, Notfound: false})
 		}
 	} else if r.Method == "GET" {
-		ExecuteTemplate(w, PageData{Cards: Data.Cards, Option: op1, Notfound: false})
+		ExecuteTemplate(w, PageData{Cards: Data.Cards, Option: op1, Oplocation: op2, Notfound: false})
 	} else {
 		ExecuteError(w, "Method not allowed", "405")
 		return
