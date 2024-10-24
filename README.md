@@ -6,12 +6,12 @@
 >>>Additionally, the fetched data is organized into a series of artist/band cards.
 >>>
 >>>The project includes four main bonus features:
->1. Visualization
->2. Geolocation
->3. Filters
->4. Search bar
-
-You can explore these features by browsing the different branches of the project.
+>>1. Visualization
+>>2. Geolocation
+>>3. Filters
+>>4. Search bar
+>
+>You can explore these features by browsing the different branches of the project.
 
 ## Authors
 - [@yahyaahs](https://github.com/yahyaahs)
