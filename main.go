@@ -1,32 +1,31 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
-	help "tools/tools"
+	"GTapi/tracker"
+	"GTapi/webserver"
 )
 
+var API = "https://groupietrackers.herokuapp.com/api"
+
 func main() {
-	Port := "localhost:8080"
-	var err error
+	port := ":8080"
 
-	help.Data.Cards, err = help.FetchArtistData("https://groupietrackers.herokuapp.com/api")
+	tracker.APiProcess(API)
+
+	// serving style
+	http.HandleFunc("/style/", webserver.ServeHandle)
+
+	// handle web functions
+	http.HandleFunc("/", webserver.HomeHandle)
+
+	log.Println("Serving files on " + port + "...")
+	log.Println("http://localhost" + port + "/")
+	// lanche the server
+	err := http.ListenAndServe(port, nil)
 	if err != nil {
-		log.Printf("Error fetching artist data: %v", err)
-		return
-	}
-
-	http.HandleFunc("/static/", help.ServeHandle)
-	http.HandleFunc("/", help.Index)
-	http.HandleFunc("/bandsinfo", help.Bandinfo)
-	http.HandleFunc("/filter", help.FilterHandler)
-
-	fmt.Println("Server is running at http://" + Port)
-	err = http.ListenAndServe(Port, nil)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		return
+		log.Fatal(err)
 	}
 }

@@ -1,17 +1,21 @@
-package tools
+package webserver
 
 import (
 	"strconv"
 	"strings"
+
+	"GTapi/tracker"
 )
 
 func SearchProcess(key string) []int {
 	res := []int{}
 	value := strings.ToLower(key)
-	for k, v := range Data.Cards {
+	for k, v := range tracker.Artists {
 		if strings.HasPrefix(strings.ToLower(v.Name), value) || strings.ToLower(v.FirstAlbum) == value || strconv.Itoa(v.CreationDate) == value {
 			res = append(res, k)
 		}
+	}
+	for k, v := range tracker.Artists {
 		for _, j := range v.Members {
 			if strings.HasPrefix(strings.ToLower(j), value) {
 				if !CheckVal(k, res) {
@@ -19,7 +23,9 @@ func SearchProcess(key string) []int {
 				}
 			}
 		}
-		for _, j := range v.Locations {
+	}
+	for k, v := range tracker.Artists {
+		for _, j := range v.LocationST.Locations {
 			if strings.Contains(strings.ToLower(j), value) {
 				if !CheckVal(k, res) {
 					res = append(res, k)
@@ -39,18 +45,16 @@ func CheckVal(n int, tab []int) bool {
 	return false
 }
 
-func GetOptions(data PageData) map[string]int {
-	options := make(map[string]int)
-	for i, c := range data.Cards {
-		options[c.Name] = i
-		options[c.FirstAlbum+" - first album date"] = i
-		options[strconv.Itoa(c.CreationDate)+" - creation date"] = i
+func GetOptions(data []tracker.Artist) {
+	for i, c := range data {
+		Options[c.Name+" - artist/band"] = i
+		Options[c.FirstAlbum+" - first album date"] = i
+		Options[strconv.Itoa(c.CreationDate)+" - creation date"] = i
 		for _, j := range c.Members {
-			options[j+" - members"] = i
+			Options[j+" - members"] = i
 		}
-		for _, j := range c.Locations {
-			options[j+" - locations"] = i
+		for _, j := range c.LocationST.Locations {
+			Options[j+" - locations"] = i
 		}
 	}
-	return options
 }
