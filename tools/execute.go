@@ -3,13 +3,10 @@ package tools
 import (
 	"html/template"
 	"net/http"
-	"os"
-	"strings"
 )
 
 func ServeHandle(w http.ResponseWriter, r *http.Request) {
-	_, err := os.Stat("." + r.URL.Path)
-	if strings.HasSuffix(r.URL.Path, "/") || err != nil {
+	if r.URL.Path == "/static/" {
 		http.Redirect(w, r, "/", http.StatusPermanentRedirect)
 		return
 	}

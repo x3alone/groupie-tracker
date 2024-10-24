@@ -14,16 +14,16 @@ body {
   margin: 1em auto;
   background-color: rgba(255, 255, 255, 0.8);
   border: 4px solid black;
-  border-radius: 8px;
-  padding: 1.2em;
-  max-width: 60%;
-  
+  border-radius: 10px;
+  padding: 0.5em;
+  max-width: 100%;
 }
 
 .search-form {
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 500px;
 }
 
 .search-label {
@@ -57,102 +57,44 @@ body {
 
 }
 
-/* -------------filter style-----------------  */
-.filter {
-  background-color: rgba(255, 255, 255, 0.85);
+/* -------------search style----------------- */
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 2em auto;
+  background-color: rgba(255, 255, 255, 0.8);
   border: 4px solid black;
-  border-radius: 8px;
-  padding: 1.2em;
-  margin: 1.5em auto;
-  max-width: 60%;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
-}
-
-.filter p {
-  font-size: 1em;
-  color: black;
-  margin: 0.3em 0;
-}
-
-.filter label {
-  font-size: 0.9em;
-  color: black;
-}
-
-.filter .range-container {
-  display: flex;
-  align-items: center;
-  gap: 0.8em;
-}
-
-.filter input[type="range"] {
-  width: 100%;
-  margin: 0;
-}
-
-.filter output.year {
-  display: inline-block;
-  width: 2.5em;
-  text-align: center;
-  font-size: 0.9em;
-  color: black;
-}
-
-.filter .members-container,
-.filter .range-container {
-  display: flex;
-  align-items: center;
-  gap: 0.8em;
-  flex-wrap: wrap;
-}
-
-.filter .members-container label {
-  font-size: 0.9em;
-  color: black;
-}
-
-.filter .members-container input[type="checkbox"] {
-  margin-right: 0.5em;
-}
-
-.filter .select {
-  display: flex;
-  max-width: 80%;
-  flex-direction: column;
-  gap: 0.3em;
+  border-radius: 10px;
   padding: 1em;
+  max-width: 80%;
 }
 
-.filter .select label {
-  font-size: 0.9em;
-  color: black;
+.search-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  max-width: 500px;
 }
 
-.filter .select select {
-  padding: 0.4em;
-  border: 1px solid black;
+.search-input {
+  flex: 1;
+  padding: 0.5em;
+  border: 2px solid black;
   border-radius: 5px;
-  font-size: 0.9em;
 }
 
-.findButton {
+.search-button {
   background-color: black;
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 0.6em 1.2em;
+  padding: 0.5em 1em;
   cursor: pointer;
-  font-size: 1.1em;
-  margin-top: 0.8em;
-  display: inline-block;
 }
 
-.findButton:hover {
+.search-button:hover {
   background-color: darkgray;
-  transition: 0.3s;
 }
 
 /* -----------------content style------------- */
@@ -164,6 +106,14 @@ body {
   gap: 1.5em;
   padding: 1em;
   transition: filter 0.1s ease;
+}
+
+.container:hover .item {
+  filter: blur(100px);
+}
+
+.container .item:hover {
+  filter: none;
 }
 
 .notfound {
@@ -181,7 +131,7 @@ body {
   padding: 1em;
   border-radius: 10px;
   text-align: center;
-  flex: 1 1;
+  flex: 1 1 calc(25% - 2em);
   box-sizing: border-box;
   transition: filter 0.3s ease;
 }
