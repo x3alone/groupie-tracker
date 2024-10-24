@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="shortcut icon" href="../static/icon.png" />
+    <title>Groupie-tracker</title>
+</head>
+
+<body>
+    <a href="/"><img src="static/Xicone.png" alt=""></a>
+
+    <div class="search">
+        <form class="search-form" action="/" method="post">
+            <p class="search-label">Search :</p> <input class="search-input" list="search-bar" name="search" />
+            <datalist id="search-bar">
+                {{range $key, $value := .Option}}
+                <option value="{{$key}}"></option>
+                {{end}}
+            </datalist>
+            <button class="search-button" type="submit">🔍</button>
+        </form>
+    </div>
+
+    <div class="filter">
+        <form action="/filter" method="POST">
+            <div class="range-container">
+                <div class="firstalbum">
+                    <p>Enter the first album date:</p>
+                    <label for="firstAlbumMin">from:</label>
+                    <input type="range" id="firstAlbumMin" name="firstAlbumMin" min="1963" max="2020" step="1"
+                        value="1963" oninput="this.nextElementSibling.value = this.value">
+                    <output class="year">1963</output>
+                    <label for="firstAlbumMax">to:</label>
+                    <input type="range" id="firstAlbumMax" name="firstAlbumMax" min="1963" max="2020" step="1"
+                        value="2020" oninput="this.nextElementSibling.value = this.value">
+                    <output class="year">2020</output>
+                </div>
+                <div class="creationdate">
+                    <p>Enter the creation date:</p>
+                    <label for="creationdate">from:</label>
+                    <input type="range" id="creationDateMin" name="creationDateMin" min="1958" max="2020" step="1"
+                        value="1958" oninput="this.nextElementSibling.value = this.value">
+                    <output class="year">1958</output>
+                    <label for="creationdate">to:</label>
+                    <input type="range" id="creationDateMax" name="creationDateMax" min="1958" max="2020" step="1"
+                        value="2020" oninput="this.nextElementSibling.value = this.value">
+                    <output class="year">2020</output>
+                </div>
+            </div>
+
+            <div class="members-container">
+                <label>Select a number of members:</label>
+                <input type="checkbox" name="member" value="1"><label>1</label>
+                <input type="checkbox" name="member" value="2"><label>2</label>
+                <input type="checkbox" name="member" value="3"><label>3</label>
+                <input type="checkbox" name="member" value="4"><label>4</label>
+                <input type="checkbox" name="member" value="5"><label>5</label>
+                <input type="checkbox" name="member" value="6"><label>6</label>
+                <input type="checkbox" name="member" value="7"><label>7</label>
+                <input type="checkbox" name="member" value="8"><label>8</label>
+            </div>
+
+            <div class="select">
+                <select id="location" name="location">
+                    <option value="" disabled selected>Select a location</option>
+                    {{range .Oplocation}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
+            </div>
+
+            <button type="submit" class="findButton">Filter</button>
+            <input type="reset" class="findButton">
+        </form>
+    </div>
+
+    {{if .Notfound}}
+    <div class="container">
+        <div class="notfound">
+            <h1>Artist not found</h1>
+        </div>
+    </div>
+    {{else}}
+    <div class="container">
+        {{ range .Cards }}
+        <form action="/bandsinfo?=id{{.Id}}" method="POST">
+            <div class="item">
+                <h3>{{.Name}}</h3>
+                <img src="{{.Image}}" alt="{{.Name}}">
+                <div class="btn">
+                    <button type="submit" class="button">MORE</button>
+                </div>
+            </div>
+        </form>
+        {{ end }}
+    </div>
+    {{end}}
+</body>
+
+</html>
